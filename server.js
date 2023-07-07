@@ -17,14 +17,16 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
 app.set('view engine', 'ejs');
+app.use(express.urlencoded({ extended: false}));
 
 app.get('/', (req, res) =>{
     res.render('index');
 });
 
-app.post('/shortUrls', (req, resd) =>{
-    
-})
+app.post('/shortUrls', (req, res) =>{
+    console.log(req.body.full_url);
+    res.redirect('/');
+});
 
 app.listen(PORT, () => {
     console.log(`Express app is listening on port ${PORT}`);
